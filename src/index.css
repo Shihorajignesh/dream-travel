@@ -1,0 +1,24 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-lagoon-50/40 font-sans text-lagoon-900 antialiased dark:bg-night-900 dark:text-slate-200; overflow-x: hidden; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-lagoon-500; outline-style: solid; }
+  @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+}
+@layer components {
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition active:scale-95; }
+  .btn-primary { @apply btn bg-sun-500 text-lagoon-900 hover:bg-sun-400; }
+  .btn-ghost { @apply btn border border-white/60 text-white hover:bg-white/15; }
+  .input { @apply min-h-[44px] w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-lagoon-900 dark:border-night-700 dark:bg-night-800 dark:text-slate-100; }
+  .container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+}
+
+/* Frameless, animated imagery */
+.reveal { opacity: 0; transform: translateY(32px) scale(.985); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal:nth-child(3n+2) { transition-delay: .09s; }
+.reveal:nth-child(3n+3) { transition-delay: .18s; }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.14) translate(-1.5%, -1%); } }
+.kenburns { animation: kenburns 20s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .kenburns { animation: none; } .reveal { opacity: 1; transform: none; } }
